@@ -1,8 +1,13 @@
 import pandas as pd
 from pathlib import Path
 
+# Find my main project folder
+project_root = Path(__file__).parent.parent
+#------------------
+# EXTRACT THE DATA
+#------------------
+
 def extract_data():
-    project_root = Path(__file__).parent.parent
     file_path = project_root / "data" / "raw" / "itineraries-min-100k.csv"
     # file_path = Path("data/raw/itineraries-min-100k.csv")
 
@@ -20,10 +25,10 @@ flight_data = extract_data()
 #OR flight_data.shape will return number of rows and column together like this (100000, 27)
 
 # print("Shape:")
-# print(flight_data.shape)
+# print(flight_data.shape) #Properties/attributes → don't use ()
 
 # print("\nFirst 5 rows:")
-# print(flight_data.head())
+# print(flight_data.head()) #Functions/methods → use ()
 
 # print("\nData types:")
 # print(flight_data.dtypes)
@@ -89,6 +94,7 @@ flight_data = flight_data.rename(columns={
 print(flight_data.columns)
 
 # 3.Convert dtpypes of the dates
+
 flight_data["search_date"] = pd.to_datetime(flight_data["search_date"])
 flight_data["flight_date"] = pd.to_datetime(flight_data["flight_date"])
 
@@ -97,6 +103,7 @@ print(flight_data["flight_date"].dt.year)
 #.dt gives access to date/time properties in Pandas
 
 # 4. Create additional_fees column
+
 flight_data["additional_fees"] = (flight_data["total_fare"] - flight_data["base_fare"])
 
 #Check data with those 3 columns
@@ -106,6 +113,7 @@ print(flight_data[["base_fare", "total_fare", "additional_fees"]].head())
 # Selecting MULTIPLE columns → two pairs of brackets
 
 # 5. Create flight_type column
+
 flight_data["flight_type"] = flight_data["is_nonstop"].map({
     True: "Nonstop",
     False: "Connecting"
@@ -117,3 +125,7 @@ print(flight_data["flight_type"].value_counts())
 # value_counts() counts how many times each value occurs.
 
 # 6.Save the processed CSV
+
+cleaned_file = project_root / "data" / "processed" / "flight_cleaned.csv"
+flight_data.to_csv(cleaned_file, index=False)
+
