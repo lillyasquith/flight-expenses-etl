@@ -85,7 +85,7 @@ The project uses SQL to perform some basic data analysis, such as:
 
 - How many flights are in the dataset?
 - How many flights are nonstop or connecting?
-- Other basic flight and fare analysis
+- Other basic flight and fare analysis (To be continued)
 
 
 ## What I Learned
