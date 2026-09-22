@@ -17,7 +17,7 @@ def extract_data():
 flight_data = extract_data()
 
 #------------------
-# INPECT THE DATA
+# INSPECT THE DATA
 #------------------
 
 # print(len(flight_data))#number of rows 
