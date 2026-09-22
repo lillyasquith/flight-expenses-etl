@@ -128,4 +128,10 @@ print(flight_data["flight_type"].value_counts())
 
 cleaned_file = project_root / "data" / "processed" / "flight_cleaned.csv"
 flight_data.to_csv(cleaned_file, index=False)
+# index=False tells Pandas not to save the DataFrame's INDEX as an extra column in the CSV.
+# If index=True, the csv file will be like: 
+# ,name,price
+# 0,Delta,250
+# 1,United,300
+# 2,Alaska,200
 
