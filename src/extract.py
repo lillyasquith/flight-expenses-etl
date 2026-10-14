@@ -66,7 +66,11 @@ columns_list = [
     "segmentsCabinCode"
 ]
 
-#rather than ASSIGN the list directly to flight_data like this: flight_data = columns_list => This replaces your DataFrame with the list of column names => A Python list does not have .columns, so this will cause an error. Instead, use the list to SELECT from the DataFrame like this: 
+#rather than ASSIGN the list directly to flight_data 
+# like this: flight_data = columns_list 
+# => This replaces your DataFrame with the list of column names 
+# => A Python list does not have .columns, so this will cause an error. 
+# Instead, use the list to SELECT from the DataFrame like this: 
 
 flight_data = flight_data[columns_list]
 
